@@ -1,0 +1,1384 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="antialiased text-slate-800 bg-slate-50">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#f9fafb] border-b boder-slate-200 shadow-sm ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- logo -->
+                <div class="flex items-center gap-6">
+                    <a href="#home" class="flex items-center gap-2 group">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white font-bold shadown-sm group-hover:scale-105 transition-transform">
+                            GFG
+                        </div>
+                        <div class="hidden sm:block">
+                            <div class="text-lg font-semibold text-slate-800">
+                                GeeksForGeeks<span class="text-green-500">Jobs</span>
+                            </div>
+                            <div class="text-xs text-slate-500 -mt-0.5">
+                                Jobs . Hiring . Careers
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Nav-links -->
+                     <nav class="hidden lg-flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <a href="#home" class="py-2 px-3 rounded hover:text-indigo-600 hover:bg-indigo-50">Home</a>
+                        <a href="#available" class="py-2 px-3 rounded hover:text-indigo-600 hover:bg-indigo-50">Available Jobs</a>
+                        <a href="#listing" class="py-2 px-3 rounded hover:text-indigo-600 hover:bg-indigo-50">Job Listing</a>
+                        <a href="#popular" class="py-2 px-3 rounded hover:text-indigo-600 hover:bg-indigo-50">Popular Jobs</a>
+                     </nav>
+                </div>
+
+                 <!-- RIGHT SIDE BUTTONS -->
+                <div class="flex items-center gap-3">
+                    <!-- Post Job -->
+                    <button
+                    id="openPostJob"
+                    class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-md border border-indigo-600 text-indigo-600 text-sm font-medium hover:bg-indigo-50 transition"
+                    >
+                    <svg
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                    >
+                        <path
+                        d="M12 5v14M5 12h14"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        />
+                    </svg>
+                    Post Job
+                    </button>
+
+                    <!-- Recruiter Login -->
+                    <button
+                    id="loginRecruiterBtn"
+                    class="hidden lg:inline px-4 py-2 text-sm font-medium rounded-md border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
+                    >
+                    Recruiter Login
+                    </button>
+
+                    <!-- Job Seeker Login -->
+                    <button
+                    id="loginSeekerBtn"
+                    class="px-4 py-2 text-sm font-medium rounded-md bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition"
+                    >
+                    Job Seeker
+                    </button>
+
+                    <!-- MOBILE MENU BUTTON -->
+                    <button
+                    id="mobileBtn"
+                    class="ml-2 inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:bg-slate-200 lg:hidden"
+                    >
+                    <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center bg-gradient-to-br from-indigo-600 via-sky-600 to-blue-500 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-400 via-indigo-400 to-transparent blur-3xl">
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-12">
+                <!-- Left side -->
+                <div>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-lg">
+                        Find Your <span class="text-yellow-300">Dream Job</span>
+                    </h1>
+                    <p class="mt-4 text-indigo-100 text-lg max-w-xl">
+                        Explore thousands of verified openings from trusted employers. Your next career move starts here.
+                    </p>
+
+                    <!-- Form UI -->
+                    <form
+                    id="heroSearch"
+                    class="mt-8 bg-white/20 backdrop-blur-md border border-white/30 p-4 rounded-xl shadow-lg flex flex-col sm:flex-row gap-3 items-center"
+                    >
+                        <input
+                        id="q"
+                        class="flex-1 w-full px-4 py-3 bg-white/90 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                        placeholder="Search by job title, skills, or company..." 
+                        />
+                        <input
+                        id="loc"
+                        class="w-full sm:w-52 px-4 py-3 bg-white/90 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                        placeholder="Location" 
+                        />
+                        <button
+                        type="submit"
+                        class="w-full sm:w-auto px-6 py-3 rounded-md bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-300 transition-all shadow-md hover:shadow-lg"
+                        > 
+                        🔍 Search Jobs
+                        </button>
+                    </form>
+
+                    <!-- Quick Filters -->
+                    <div class="mt-6 flex flex-wrap gap-3 text-sm">
+                        <span class="px-3 py-1.5 rounded-full bg-yellow-300/20 text-yellow-100 border border-yellow-300/30 hover:bg-yellow-400/30 transition cursor-pointer">
+                            Remote
+                        </span>
+                        <span class="px-3 py-1.5 rounded-full bg-yellow-300/20 text-yellow-100 border border-yellow-300/30 hover:bg-yellow-400/30 transition cursor-pointer">
+                            Full-time
+                        </span>
+                        <span class="px-3 py-1.5 rounded-full bg-yellow-300/20 text-yellow-100 border border-yellow-300/30 hover:bg-yellow-400/30 transition cursor-pointer">
+                            Immediate Joiners
+                        </span>
+                        <span class="px-3 py-1.5 rounded-full bg-yellow-300/20 text-yellow-100 border border-yellow-300/30 hover:bg-yellow-400/30 transition cursor-pointer">
+                            Data Science
+                        </span>
+                    </div>
+
+                    <!-- Trusted companies -->
+                    <div class="mt-10">
+                        <div class="text-indigo-100 text-sm font-medium mb-2">
+                            Trusted by top companies
+                        </div>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <div class="px-4 py-2 bg-white text-gray-800 rounded-lg shadow hover:shadow-lg text-sm font-semibold transition">
+                                TechWave
+                            </div>
+                            <div class="px-4 py-2 bg-white text-gray-800 rounded-lg shadow hover:shadow-lg text-sm font-semibold transition">
+                                Nexa Labs
+                            </div>
+                            <div class="px-4 py-2 bg-white text-gray-800 rounded-lg shadow hover:shadow-lg text-sm font-semibold transition">
+                                InsightEdge
+                            </div>
+                            <div class="px-4 py-2 bg-white text-gray-800 rounded-lg shadow hover:shadow-lg text-sm font-semibold transition">
+                                Innovent
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="relative hidden lg:flex justify-center">
+                    <div class="relative bg-white rounded-3xl shadow-xl overflow-hidden w-[90%] max-w-lg transform hover:scake-[1.02] transition duration-300">
+                        <div class="bg-gradient-to-br from-indigo-600 to-sky-500 text-white p-6">
+                            <h3 class="text-lg font-semibold">
+                                Live Job Insights
+                            </h3>
+                            <p class="text-indigo-100 text-sm mt-1">
+                                Updated in real time
+                            </p>
+                        </div>
+
+                        <div class="p-6 space-y-5 bg-white text-gray-700">
+                            <!-- Stat 1: Active Jobs -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-indigo-100 text-purple-600 rounded-lg flex items-center justify-center">                          
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-violet-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-violet-600 drop-shadow-sm">
+                                        124,567
+                                    </div>
+                                    <div class="text-sm text-slate-500">Active Jobs</div>
+                                </div>
+                            </div>
+                            <!-- Stat 2: New This Week -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center">                          
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-sky-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 0 0-2 2v4m5-6h8M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m0 0h3a2 2 0 0 1 2 2v4m0 0v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6m18 0s-4 2-9 2-9-2-9-2m9-2h.01"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-sky-600 drop-shadow-sm">
+                                        4,321
+                                    </div>
+                                    <div class="text-sm text-slate-500">New This Week</div>
+                                </div>
+                            </div>
+                            <!-- Stat 3: Active Companies -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">                          
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-green-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"/>
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-green-600 drop-shadow-sm">
+                                        980+
+                                    </div>
+                                    <div class="text-sm text-slate-500">Active Companies</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Available job section -->
+    <section id="available" class="py-20 bg-[#f9fafb]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- heading -->
+            <div class="text-center mb-14">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800">
+                    Available <span class="text-indigo-600">Jobs</span>
+                </h2>
+                <p class="mt-3 text-lg text-slate-600">
+                    Explore <span class="text-indigo-600 font-semibold">1234</span> Open roles from verified companies
+                </p>
+
+                <!-- Category buttons -->
+                <div class="mt-6 inline-flex bg-white border border-slate-200 rounded-full p-1 shadow-sm">
+                    <button class="px-6 py-2 rounded-full text-sm font-medium bg-indigo-600 text-white shadow transition">
+                        All
+                    </button>
+                    <button class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 transition">
+                        Tech
+                    </button>
+                    <button class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 transition">
+                        Design
+                    </button>
+                    <button class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 transition">
+                        Marketing
+                    </button>
+                    <button class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 transition">
+                        Remote
+                    </button>
+                </div>
+            </div>
+
+            <!-- Job cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- card-1 -->
+                <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 h-full flex flex-col relative">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded bg-gradient-to-br from-indigo-500 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                                TW
+                            </div>
+                            <div class="me-2">
+                                <h3 class="text-lg font-semibold text-slate-800 hover:text-indigo-600 transition-colors"> 
+                                    Frontend Developer (React)
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-0.5">
+                                    TechWave • Bengaluru
+                                </p>
+                            </div>
+                            <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors">
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                />
+                            </svg>
+                            </button>
+                        </div>                 
+                        <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                            Build modern, responsive UIs with React and Tailwind.
+                            Collaborate with product teams to deliver great user
+                            experiences.
+                        </p>
+
+                        <div class="mt-5 flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-4 text-slate-500">
+                                <div class="flex items-center gap-1.5">
+                                    <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M12 6v12m6-6H6"
+                                    />
+                                    </svg>
+                                    <span>6 - 10 LPA</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                   <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M20.25 14.15v4.09a2.25 2.25 0 01-2.25 2.25h-13.5a2.25 2.25 0 01-2.25-2.25V6.3a2.25 2.25 0 012.25-2.25h4.09m6 0H21m-3.75 0V3.75m0 3.75L21 3.75M3.75 12h16.5"
+                                    />
+                                    </svg>
+                                    <span>2 - 4 yrs</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    class="mt-auto p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between rounded-b-2xl"
+                    >
+                        <div class="flex items-center gap-2">
+                            <span
+                            class="px-2 py-1 text-xs bg-indigo-100 text-indigo-700 rounded-md font-medium"
+                            >Remote</span
+                            >
+                            <span
+                            class="px-2 py-1 text-xs bg-sky-100 text-sky-700 rounded-md font-medium"
+                            >Full-time</span
+                            >
+                        </div>
+                        <button
+                        class="applyBtn px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition-all"
+                        >
+                            Apply Now
+                        </button>
+                    </div>
+                </article>
+
+                <!-- card-2 -->
+                <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 h-full flex flex-col relative">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded bg-gradient-to-br from-sky-500 to-indigo-500 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                                NL
+                            </div>
+                            <div class="me-2">
+                                <h3 class="text-lg font-semibold text-slate-800 hover:text-indigo-600 transition-colors"> 
+                                    Full Stack Engineer
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-0.5">
+                                    Nexa Labs • Hyderabad
+                                </p>
+                            </div>
+                            <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors">
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                />
+                            </svg>
+                            </button>
+                        </div>                 
+                        <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                            Develop scalable backend APIs using Node.js and deliver fast, responsive React frontends, CI/CD and testing experience preferred.
+                        </p>
+
+                        <div class="mt-5 flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-4 text-slate-500">
+                                <div class="flex items-center gap-1.5">
+                                    <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M12 6v12m6-6H6"
+                                    />
+                                    </svg>
+                                    <span>10-18 LPA</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                   <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M20.25 14.15v4.09a2.25 2.25 0 01-2.25 2.25h-13.5a2.25 2.25 0 01-2.25-2.25V6.3a2.25 2.25 0 012.25-2.25h4.09m6 0H21m-3.75 0V3.75m0 3.75L21 3.75M3.75 12h16.5"
+                                    />
+                                    </svg>
+                                    <span>3-7 yrs</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    class="mt-auto p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between rounded-b-2xl"
+                    >
+                       <span class="text-xs text-slate-500">
+                            Posted 1 week ago
+                       </span>
+                        <button
+                        class="applyBtn px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition-all"
+                        >
+                            Apply Now
+                        </button>
+                    </div>
+                </article>
+
+                <!-- card-3 -->
+                <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 h-full flex flex-col relative">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                                IE
+                            </div>
+                            <div class="me-2">
+                                <h3 class="text-lg font-semibold text-slate-800 hover:text-indigo-600 transition-colors"> 
+                                    Data Analyst
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-0.5">
+                                    InsightEdge • Remote
+                                </p>
+                            </div>
+                            <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors">
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                />
+                            </svg>
+                            </button>
+                        </div>                 
+                        <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                            Analyze metrics, create dashboards, and present data-driven insights. Strong SQL and Python skills required.
+                        </p>
+
+                        <div class="mt-5 flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-4 text-slate-500">
+                                <div class="flex items-center gap-1.5">
+                                    <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M12 6v12m6-6H6"
+                                    />
+                                    </svg>
+                                    <span>4-6 LPA</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                   <svg
+                                    class="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M20.25 14.15v4.09a2.25 2.25 0 01-2.25 2.25h-13.5a2.25 2.25 0 01-2.25-2.25V6.3a2.25 2.25 0 012.25-2.25h4.09m6 0H21m-3.75 0V3.75m0 3.75L21 3.75M3.75 12h16.5"
+                                    />
+                                    </svg>
+                                    <span>1-3 yrs</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    class="mt-auto p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between rounded-b-2xl"
+                    >
+                       <span class="text-xs text-slate-500">
+                            Posted 5 days ago
+                       </span>
+                        <button
+                        class="applyBtn px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition-all"
+                        >
+                            Apply Now
+                        </button>
+                    </div>
+                    
+                </article>
+            </div>
+
+                <!-- View More button -->
+                <div class="flex mt-12 justify-center items-center">
+                    <button class="rounded-md px-4 py-2 bg-white border border-slate-500 text-indigo-600 font-semibold hover:bg-slate-200 hover:border-indigo-600 shadow-sm transition-all">
+                        View More Jobs
+                    </button>
+                </div>
+    </section>
+
+    <!-- Job listings section -->
+    <section id="listings" class="py-20 bg-[#f9fafb]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- heading -->
+            <div class="text-center mb-14">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800">
+                    Job Listings
+                </h2>
+                <p class="mt-3 text-lg text-slate-600">
+                    Discover your next career opportunity. A comprehensive list of jobs curated just for you.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- sidebar filters -->
+                <aside class="lg:col-span-1">
+                    <div class="sticky top-24 space-y-6">
+
+                        <!-- Filters -->
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
+                            <h4 class="text-lg font-semibold text-slate-900 flex items-center gap-2">
+                               <svg class="w-6 h-6 text-gray-800 dark:text-indigo-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M5.05 3C3.291 3 2.352 5.024 3.51 6.317l5.422 6.059v4.874c0 .472.227.917.613 1.2l3.069 2.25c1.01.742 2.454.036 2.454-1.2v-7.124l5.422-6.059C21.647 5.024 20.708 3 18.95 3H5.05Z"/>
+                                </svg>
+                                Job Filters
+                            </h4>
+
+                            <div class="mt-6 space-y-6">
+                                <!-- Experience -->
+                                <div>
+                                    <label class="text-sm font-medium text-slate-700" for="experience">Experience</label>
+                                    <select class="mt-2 w-full p-3 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 transition-shadow">
+                                        <option>Any Experience</option>
+                                        <option>0 - 1 yrs</option>
+                                        <option>1 - 3 yrs</option>
+                                        <option>3 - 6 yrs</option>
+                                        <option>6+ yrs</option>
+                                    </select>
+                                </div>
+
+                                <!-- Salary -->
+                                <div>
+                                    <label class="text-sm font-medium text-slate-700" for="salary">Salary (LPA)</label>
+                                    <select class="mt-2 w-full p-3 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 transition-shadow">
+                                        <option>Any Salary</option>
+                                        <option>0 - 3</option>
+                                        <option>3 - 6</option>
+                                        <option>6 - 12</option>
+                                        <option>12+</option>
+                                    </select>
+                                </div>
+
+                                <!-- Job Type -->
+                                <div>
+                                    <label class="text-sm font-medium text-slate-700">Job Type</label>
+                                    <div class="mt-2 space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 rounded border border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm text-slate-600">Full-time</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 rounded border border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm text-slate-600">Remote</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 rounded border border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm text-slate-600">Contract</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="bg-gradient-to-br from-indigo-600 to-sky-500 text-white rounded-2xl p-6 shadow-lg">
+                            <h4 class="text-lg font-semibold">Create Job Alert</h4>
+                            <p class="text-sm text-indigo-100 mt-1.5 leading-relaxed">
+                            Get notified when new jobs match your criteria.
+                            </p>
+                            <div class="mt-4">
+                                <input
+                                    placeholder="you@email.com"
+                                    class="w-full px-3 py-2.5 border border-indigo-400 bg-indigo-500/50 placeholder-indigo-200 rounded-lg text-sm focus:ring-2 focus:ring-white"
+                                />
+                                <button
+                                    class="mt-3 w-full px-4 py-2.5 bg-white text-indigo-600 font-semibold text-sm rounded-lg hover:bg-indigo-50 transition"
+                                    >
+                                    Create Alert
+                                </button>
+                            </div>        
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Job Listings -->
+                <main class="lg:col-span-3">
+                    <!-- Header -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-slate-800">
+                            <span class="text-indigo-600">1,234</span> jobs found
+                        </h3>
+                        <div class="flex items-center gap-3 mt-3 sm:mt-0">
+                            <span class="text-sm text-slate-600">
+                                Sort by:
+                            </span>
+                            <select class="px-3 py-2 border border-slate-300 bg-white rounded-lg text-sm focus:ring-2 focus:ring-indigo-300">
+                                <option>Most Relevant</option>
+                                <option>Date Posted</option>
+                                <option>Highest Salary</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Job Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                        <!-- Job card-1 -->
+                        <article class="relative  bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-0.5 transition-all duration-300 p-5 ">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start gap-4 ">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-indigo-500 to to-sky-500 p-3 rounded-lg shadow-sm">
+                                        <h1 class="text-xl text-white font-bold">TW</h1>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-slate-500">TechWave</p>
+                                        <h2 class="text-lg font-medium">Senior Frontend Engineer</h2>
+                                    </div>
+                                    <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors ml-10">
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        >
+                                        <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                        />
+                                    </svg>
+                                    </button>
+                                </div>  
+                            </div>
+                            <div class="gap-4 mt-3 flex">
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg class="w-4 h-5 text-slate-600 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M10 2a3 3 0 0 0-3 3v1H5a3 3 0 0 0-3 3v2.382l1.447.723.005.003.027.013.12.056c.108.05.272.123.486.212.429.177 1.056.416 1.834.655C7.481 13.524 9.63 14 12 14c2.372 0 4.52-.475 6.08-.956.78-.24 1.406-.478 1.835-.655a14.028 14.028 0 0 0 .606-.268l.027-.013.005-.002L22 11.381V9a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-3-3h-4Zm5 4V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1h6Zm6.447 7.894.553-.276V19a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-5.382l.553.276.002.002.004.002.013.006.041.02.151.07c.13.06.318.144.557.242.478.198 1.163.46 2.01.72C7.019 15.476 9.37 16 12 16c2.628 0 4.98-.525 6.67-1.044a22.95 22.95 0 0 0 2.01-.72 15.994 15.994 0 0 0 .707-.312l.041-.02.013-.006.004-.002.001-.001-.431-.866.432.865ZM12 10a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z" clip-rule="evenodd"/>
+                                    </svg>
+                                    4 - 8 yrs
+                                </div>
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    >
+                                    <path
+                                        d="M8.433 7.418c.158-.103.346-.195.574-.277a6.991 6.991 0 015.993 0c.228.082.416.174.574.277a1 1 0 01.52.878v1.404a1 1 0 01-.52.878c-.158.103-.346.195-.574.277a6.991 6.991 0 01-5.993 0c-.228-.082-.416-.174-.574-.277a1 1 0 01-.52-.878V8.296a1 1 0 01.52-.878z"
+                                    />
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"
+                                    />
+                                    </svg>
+                                    12 - 18 LPA
+                                </div>
+                            </div>
+                            <div class="gap-4 mt-4 flex">
+                                <div class="px-3 py-0.5 text-xs rounded-full text-emerald-700 font-medium bg-emerald-100">
+                                    Full-time
+                                </div>
+                                <div class="px-3 py-0.5 text-xs rounded-full text-indigo-700 font-medium bg-indigo-100">
+                                    Remote
+                                </div>
+                            </div>
+                            <button class="w-full bg-indigo-600 mt-6 rounded-md py-2 text-xs font-medium text-white shadow-md hover:bg-indigo-700 transition">
+                                Apply Now
+                            </button>
+                        </article>
+
+                        <!-- Job card-2 -->
+                         <article class="relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-0.5 transition-all duration-300 p-5 ">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start gap-4 ">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-sky-400 to to-indigo-500 p-3 rounded-lg shadow-sm">
+                                        <h1 class="text-xl text-white font-bold">NL</h1>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-slate-500">Nexa Labs</p>
+                                        <h2 class="text-lg font-medium">Backend Engineer (Node)</h2>
+                                    </div>
+                                    <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors ml-10">
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        >
+                                        <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                        />
+                                    </svg>
+                                    </button>
+                                </div>  
+                            </div>
+                            <div class="gap-4 mt-3 flex">
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg class="w-4 h-5 text-slate-600 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M10 2a3 3 0 0 0-3 3v1H5a3 3 0 0 0-3 3v2.382l1.447.723.005.003.027.013.12.056c.108.05.272.123.486.212.429.177 1.056.416 1.834.655C7.481 13.524 9.63 14 12 14c2.372 0 4.52-.475 6.08-.956.78-.24 1.406-.478 1.835-.655a14.028 14.028 0 0 0 .606-.268l.027-.013.005-.002L22 11.381V9a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-3-3h-4Zm5 4V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1h6Zm6.447 7.894.553-.276V19a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-5.382l.553.276.002.002.004.002.013.006.041.02.151.07c.13.06.318.144.557.242.478.198 1.163.46 2.01.72C7.019 15.476 9.37 16 12 16c2.628 0 4.98-.525 6.67-1.044a22.95 22.95 0 0 0 2.01-.72 15.994 15.994 0 0 0 .707-.312l.041-.02.013-.006.004-.002.001-.001-.431-.866.432.865ZM12 10a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z" clip-rule="evenodd"/>
+                                    </svg>
+                                    3 - 6 yrs
+                                </div>
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    >
+                                    <path
+                                        d="M8.433 7.418c.158-.103.346-.195.574-.277a6.991 6.991 0 015.993 0c.228.082.416.174.574.277a1 1 0 01.52.878v1.404a1 1 0 01-.52.878c-.158.103-.346.195-.574.277a6.991 6.991 0 01-5.993 0c-.228-.082-.416-.174-.574-.277a1 1 0 01-.52-.878V8.296a1 1 0 01.52-.878z"
+                                    />
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"
+                                    />
+                                    </svg>
+                                    10 - 15 LPA
+                                </div>
+                            </div>
+                            <div class="gap-4 mt-4 flex">
+                                <div class="px-3 py-0.5 text-xs rounded-full text-emerald-700 font-medium bg-emerald-100">
+                                    Full-time
+                                </div>
+                            </div>
+                            <button class="w-full bg-indigo-600 mt-6 rounded-md py-2 text-xs font-medium text-white shadow-md hover:bg-indigo-700 transition">
+                                Apply Now
+                            </button>
+                        </article>
+
+                        <!-- Job card-3 -->
+                        <article class="relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-0.5 transition-all duration-300 p-5 ">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start gap-4 ">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-teal-400 to to-emerald-500 p-3 rounded-lg shadow-sm">
+                                        <h1 class="text-xl text-white font-bold">IE</h1>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-slate-500">InsightEdge</p>
+                                        <h2 class="text-lg font-medium">Data Scientist</h2>
+                                    </div>
+                                    <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors ml-10">
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        >
+                                        <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                        />
+                                    </svg>
+                                    </button>
+                                </div>  
+                            </div>
+                            <div class="gap-4 mt-3 flex">
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg class="w-4 h-5 text-slate-600 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M10 2a3 3 0 0 0-3 3v1H5a3 3 0 0 0-3 3v2.382l1.447.723.005.003.027.013.12.056c.108.05.272.123.486.212.429.177 1.056.416 1.834.655C7.481 13.524 9.63 14 12 14c2.372 0 4.52-.475 6.08-.956.78-.24 1.406-.478 1.835-.655a14.028 14.028 0 0 0 .606-.268l.027-.013.005-.002L22 11.381V9a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-3-3h-4Zm5 4V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1h6Zm6.447 7.894.553-.276V19a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-5.382l.553.276.002.002.004.002.013.006.041.02.151.07c.13.06.318.144.557.242.478.198 1.163.46 2.01.72C7.019 15.476 9.37 16 12 16c2.628 0 4.98-.525 6.67-1.044a22.95 22.95 0 0 0 2.01-.72 15.994 15.994 0 0 0 .707-.312l.041-.02.013-.006.004-.002.001-.001-.431-.866.432.865ZM12 10a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z" clip-rule="evenodd"/>
+                                    </svg>
+                                    2 - 4 yrs
+                                </div>
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    >
+                                    <path
+                                        d="M8.433 7.418c.158-.103.346-.195.574-.277a6.991 6.991 0 015.993 0c.228.082.416.174.574.277a1 1 0 01.52.878v1.404a1 1 0 01-.52.878c-.158.103-.346.195-.574.277a6.991 6.991 0 01-5.993 0c-.228-.082-.416-.174-.574-.277a1 1 0 01-.52-.878V8.296a1 1 0 01.52-.878z"
+                                    />
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"
+                                    />
+                                    </svg>
+                                    9 - 14 LPA
+                                </div>
+                            </div>
+                            <div class="gap-4 mt-4 flex">
+                                <div class="px-3 py-0.5 text-xs rounded-full text-indigo-700 font-medium bg-indigo-100">
+                                    Remote
+                                </div>
+                            </div>
+                            <button class="w-full bg-indigo-600 mt-6 rounded-md py-2 text-xs font-medium text-white shadow-md hover:bg-indigo-700 transition">
+                                Apply Now
+                            </button>
+                        </article>
+
+                        <!-- Job card-4 -->
+                        <article class="relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-0.5 transition-all duration-300 p-5 ">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start gap-4 ">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-red-500 to to-yellow-500 p-3 rounded-lg shadow-sm">
+                                        <h1 class="text-xl text-white font-bold">CG</h1>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-slate-500">CodeGenius</p>
+                                        <h2 class="text-lg font-medium">Full Stack Developer</h2>
+                                    </div>
+                                    <button class="absolute top-4 right-4 text-slate-400 hover:text-indigo-600 transition-colors ml-10">
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        >
+                                        <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                                        />
+                                    </svg>
+                                    </button>
+                                </div>  
+                            </div>
+                            <div class="gap-4 mt-3 flex">
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg class="w-4 h-5 text-slate-600 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M10 2a3 3 0 0 0-3 3v1H5a3 3 0 0 0-3 3v2.382l1.447.723.005.003.027.013.12.056c.108.05.272.123.486.212.429.177 1.056.416 1.834.655C7.481 13.524 9.63 14 12 14c2.372 0 4.52-.475 6.08-.956.78-.24 1.406-.478 1.835-.655a14.028 14.028 0 0 0 .606-.268l.027-.013.005-.002L22 11.381V9a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-3-3h-4Zm5 4V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1h6Zm6.447 7.894.553-.276V19a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-5.382l.553.276.002.002.004.002.013.006.041.02.151.07c.13.06.318.144.557.242.478.198 1.163.46 2.01.72C7.019 15.476 9.37 16 12 16c2.628 0 4.98-.525 6.67-1.044a22.95 22.95 0 0 0 2.01-.72 15.994 15.994 0 0 0 .707-.312l.041-.02.013-.006.004-.002.001-.001-.431-.866.432.865ZM12 10a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z" clip-rule="evenodd"/>
+                                    </svg>
+                                    1 - 3 yrs
+                                </div>
+                                <div class="rounded-full bg-slate-100 text-sm text-slate-500 flex px-3 py-1 gap-2">
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    >
+                                    <path
+                                        d="M8.433 7.418c.158-.103.346-.195.574-.277a6.991 6.991 0 015.993 0c.228.082.416.174.574.277a1 1 0 01.52.878v1.404a1 1 0 01-.52.878c-.158.103-.346.195-.574.277a6.991 6.991 0 01-5.993 0c-.228-.082-.416-.174-.574-.277a1 1 0 01-.52-.878V8.296a1 1 0 01.52-.878z"
+                                    />
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"
+                                    />
+                                    </svg>
+                                    8 - 12 LPA
+                                </div>
+                            </div>
+                            <div class="gap-4 mt-4 flex">
+                                <div class="px-3 py-0.5 text-xs rounded-full text-emerald-700 font-medium bg-emerald-100">
+                                    Full-time
+                                </div>
+                                <div class="px-3 py-0.5 text-xs rounded-full text-purple-700 font-medium bg-purple-100">
+                                    Contract
+                                </div>
+                            </div>
+                            <button class="w-full bg-indigo-600 mt-6 rounded-md py-2 text-xs font-medium text-white shadow-md hover:bg-indigo-700 transition">
+                                Apply Now
+                            </button>
+                        </article>
+                    </div>
+
+                    <!-- Footer pagination -->
+                    <div class="mt-8 flex items-center justify-between">
+                        <p class="text-sm text-slate-600">
+                            Showing 1 - 4 of 1,234
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-3 py-1.5 border border-slate-300 bg-white rounded-lg text-sm font-medium hover:bg-slate-100 transition disabled disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                Previous
+                            </button>
+                            <button class="px-3 py-1.5 border border-slate-300 bg-white rounded-lg text-sm font-medium hover:bg-slate-100 transition">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular jobs section -->
+    <section id="popular" class="py-20 bg-[#f9fafb]"> 
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-800">Popular <span class="text-indigo-600">Jobs</span></h2>
+                    <p class="text-slate-500 mt-2">Roles trending this week among top companies.</p>
+                </div>
+                <div class="flex cursor-pointer">
+                    <p class="font-medium text-indigo-700">View all jobs
+                    </p>
+                    <button>
+                        <svg class="w-5 h-5 text-gray-800 dark:text-indigo-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- popular jobs cards -->
+            <div class="grid grid-cols-3 gap-8 mt-6">
+
+                <!-- card-1 -->
+                <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 h-full flex flex-col relative">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded bg-gradient-to-br from-indigo-500 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                                DS
+                            </div>
+                            <div class="me-2">
+                                <h3 class="text-lg font-semibold text-slate-800 hover:text-indigo-600 transition-colors"> 
+                                   Data Scientist
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-0.5">
+                                    InsightEdge • Remote
+                                </p>
+                            </div>
+                        </div>                 
+                        <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                            Strong demand for ML models, data pipelines, and statistical analysis skills.
+                        </p>
+
+                        <div class="mt-5 flex items-center text-sm gap-3">
+                            <div class="px-2 py-0.5 rounded-md font-medium flex items-center text-indigo-700 bg-indigo-100">
+                                Remote
+                            </div>
+                            <div class="px-2 py-0.5 rounded-md font-medium flex items-center text-emerald-700 bg-emerald-100">
+                                Full-time
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    class="mt-auto p-4 border-t border-slate-100 flex items-center gap-2 rounded-b-2xl"
+                    >
+                        <button
+                        class="applyBtn px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition-all"
+                        >
+                            Apply
+                        </button>
+                        <button
+                        class="px-4 py-2 text-slate-600 rounded-md bg-white text-sm font-semibold hover:bg-slate-100 border border-slate-400 shadow-sm transition-all"
+                        >
+                            View
+                        </button>
+                    </div>
+                </article>
+
+                <!-- card-2 -->
+                <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 h-full flex flex-col relative">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded bg-gradient-to-br from-sky-500 to-indigo-500 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                                FE
+                            </div>
+                            <div class="me-2">
+                                <h3 class="text-lg font-semibold text-slate-800 hover:text-indigo-600 transition-colors"> 
+                                   Frontend Developer
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-0.5">
+                                    TechWave • Bengaluru
+                                </p>
+                            </div>
+                        </div>                 
+                        <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                            Expertise in React, Tailwind CSS, and accessibility best practices. Building scalable UI components.
+                        </p>
+
+                        <div class="mt-5 flex items-center text-sm gap-3">
+                            <div class="px-2 py-0.5 rounded-md font-medium flex items-center text-sky-700 bg-sky-100">
+                                Hybrid
+                            </div>
+                            <div class="px-2 py-0.5 rounded-md font-medium flex items-center text-emerald-700 bg-emerald-100">
+                                Full-time
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    class="mt-auto p-4 border-t border-slate-100 flex items-center gap-2 rounded-b-2xl"
+                    >
+                        <button
+                        class="applyBtn px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition-all"
+                        >
+                            Apply
+                        </button>
+                        <button
+                        class="px-4 py-2 text-slate-600 rounded-md bg-white text-sm font-semibold hover:bg-slate-100 border border-slate-400 shadow-sm transition-all"
+                        >
+                            View
+                        </button>
+                    </div>
+                </article>
+
+                <!-- card-3 -->
+                <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 h-full flex flex-col relative">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                                BE
+                            </div>
+                            <div class="me-2">
+                                <h3 class="text-lg font-semibold text-slate-800 hover:text-indigo-600 transition-colors"> 
+                                   Backend Engineer
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-0.5">
+                                    Nexa Labs • Hyderabad
+                                </p>
+                            </div>
+                        </div>                 
+                        <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                            Build distributed microservices using Node.js and maintain cloud observability for real-time apps.
+                        </p>
+
+                        <div class="mt-5 flex items-center text-sm gap-3">
+                            <div class="px-2 py-0.5 rounded-md font-medium flex items-center text-yellow-700 bg-yellow-100">
+                                On-site
+                            </div>
+                            <div class="px-2 py-0.5 rounded-md font-medium flex items-center text-emerald-700 bg-emerald-100">
+                                Full-time
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    class="mt-auto p-4 border-t border-slate-100 flex items-center gap-2 rounded-b-2xl"
+                    >
+                        <button
+                        class="applyBtn px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition-all"
+                        >
+                            Apply
+                        </button>
+                        <button
+                        class="px-4 py-2 text-slate-600 rounded-md bg-white text-sm font-semibold hover:bg-slate-100 border border-slate-400 shadow-sm transition-all"
+                        >
+                            View
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply modal -->
+    <div id="applyModal" class="fixed hidden inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md transform" id="applyContent">
+            <div class="flex items-start justify-between mb-4">
+                <h3 class="text-xl font-semibold text-slate-800">
+                    Apply for this Job
+                </h3>
+                <button id="closeApply" class="text-slate-500 hover:text-slate-700 text-2xl leading-none">
+                    &times;
+                </button>
+            </div>
+
+            <form class="space-y-4">
+                <div>
+                    <label class="text-sm text-slate-600">Full Name</label>
+                    <input type="text" placeholder="Your full name" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required />
+                </div>
+                <div>
+                    <label class="text-sm text-slate-600">Email Address</label>
+                    <input type="email" placeholder="your@email.com" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required />
+                </div>
+                <div>
+                    <label class="text-sm text-slate-600">Resume (Link or Upload)</label>
+                    <input type="text" placeholder="LinkedIn / Google Drive URL" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required />
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" id="cancelApply" class="px-4 py-2 border border-slate-300 rounded-md text-slate-600 hover:bg-slate-100">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 border border-slate-300 rounded-md text-slate-600 hover:bg-slate-100">
+                        Submit Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Recruiter Login Modal -->
+    <div id="recruiterModal" class="fixed hidden inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md transform">
+            <div class="flex items-start justify-between mb-4">
+                <h3 class="text-xl font-semibold text-slate-800">Recruiter Login</h3>
+                <button class="closeRecruiter text-slate-500 hover:text-slate-700 text-2xl leading-none">
+                    &times;
+                </button>
+            </div>
+
+            <form class="space-y-4">
+                <div>
+                    <label class="text-sm text-slate-600">Company Email</label>
+                    <input type="email" placeholder="company@example.com" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required>
+                </div>
+                <div>
+                    <label class="text-sm text-slate-600">Password</label>
+                    <input type="password" placeholder="******" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required />
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" class="w-4 h-4 border-slate-300 rounded" />
+                        Remember me
+                    </label>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-700">Forgot password</a>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" class="closeRecruiter px-4 py-2 border border-slate-300 rounded-md text-slate-600 hover:bg-slate-100">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 shadow-sm">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Job seeker login modal -->
+    <div id="seekerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-2xl shadow-2xl p-6 w-full max-w-md transform">
+            <div class="flex items-start justify-between mb-4">
+                <h3 class="text-xl font-semibold text-slate-800">Job Server Login</h3>
+                <button class="closeSeeker text-slate-500 hover:text-slate-700 text-2xl leading-none">&times;</button>
+            </div>
+
+            <form class="space-y-4">
+                <div>
+                    <label class="text-sm text-slate-600">Password</label>
+                    <input type="password" placeholder="******" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required />
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" class="w-4 h-4 border-slate-300 rounded" />
+                        Keep me signed in
+                    </label>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-700">Forgot password</a>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" class="closeSeeker px-4 py-2 border border-slate-300 rounded-md text-slate-600 hover:bg-slate-100">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 shadow-sm">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Post job modal -->
+    <div id="postJobModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div id="postJobContent" class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-2xl transform">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 text-indigo-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 4v16m8-8H4"
+                    />
+                    </svg>
+                    Post a Job
+                </h3>
+                <button id="closePostJob" class="text-slate-500 hover:text-slate-700 text-2xl leading-none">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Form ui -->
+            <form id="postJobForm" class="grid grid-cols-1 gap-4">
+                <div>
+                    <label class="text-sm text-slate-600 font-medium">Job Title</label>
+                    <input id="pjTitle" type="text" placeholder="e.g. Frontend Developer" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required />
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-sm text-slate-600 font-medium">Company</label>
+                        <input id="pjCompany" type="text" placeholder="Company Name" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" required/>
+                    </div>
+                    <div>
+                        <label class="text-sm text-slate-600 font-medium">Location</label>
+                        <input id="pjLocation" type="text" placeholder="City, Remote, Hybrid..." class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" />
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-sm text-slate-600 font-medium">Experience</label>
+                        <input type="text" id="pjExp" placeholder="e.g. 2-4 yrs" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200">
+                    </div>
+                    <div>
+                        <label class="text-sm text-slate-600 font-medium">Salary</label>
+                        <input type="text" id="pjSalary" placeholder="e.g. 6-10 LPA" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-sm text-slate-600 font-medium">Description</label>
+                    <textarea id="pjDesc" rows="4" class="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-200"></textarea>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2"> 
+                    <button type="button" id="cancelPostJob" class="px-4 py-2 border border-slate-300 rounded-md text-slate-600 hover:bg-slate-100 transition">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 shadow-sm">
+                        Post Job
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- footer section -->
+    <footer class="bottom-0 py-10 bg-[#f9fafb] border-t border-slate-200 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+                <!-- About -->
+                <div class="flex flex-col">
+                    <div class="flex gap-2 items-center">
+                        <div class="flex justify-between items-center p-2 bg-gradient-to-br from-green-500 to-green-700 rounded-lg">
+                            <h2 class="text-white text-sm font-medium">GFG</h2>
+                        </div>
+                        <h3 class="font-medium text-lg">GeeksForGeeks Jobs</h3>
+                    </div>
+                    <p class="mt-2 text-slate-600 text-sm">GeeksForGeeks Job Portal helps millions of developers and engineers connect with top employers. Start your next big career move here!</p>
+                    <div class="flex mt-4 gap-2">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z" clip-rule="evenodd"/>
+                        </svg>
+
+                        <svg class="w-6 h-6 text-gray-800 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
+                        </svg>
+                        <svg class="w-6 h-6 text-gray-800 dark:text-slate-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <!-- Quick links -->
+                    <div class="flex flex-col">
+                        <h3 class="font-medium text-lg">Quick Links</h3>
+                        <div class="flex flex-col mt-2 text-slate-600 text-sm gap-1">
+                            <a href="">Home</a>
+                            <a href="">Available Jobs</a>
+                            <a href="">Job Listing</a>
+                            <a href="">Popular Jobs</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- Resources -->
+                    <div class="flex flex-col">
+                        <h3 class="font-medium text-lg">Resources</h3>
+                        <div class="flex flex-col mt-2 text-slate-600 text-sm gap-1">
+                            <a href="">Career Tips</a>
+                            <a href="">Resume Builder</a>
+                            <a href="">Interview Guide</a>
+                            <a href="">Employee FAQs</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- Contact Us -->
+                    <div class="flex flex-col">
+                        <h3 class="font-medium text-lg">Contact Us</h3>
+                        <div class="flex flex-col mt-2 text-slate-600 text-sm gap-1">
+                            <p>Email: <a href="">jobs@gmail.com</a></p>
+                            <p>Phone: <a href="">+91 98745 65234</a></p>
+                            <p>Address: Noida, Uttar Pradesh, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-500">
+                <p>© 2025 GeeksforGeeks Job Portal. All rights reserved.</p>
+                <div class="flex items-center gap-4 mt-3 sm:mt-0">
+                    <a href="#" class="hover:text-indigo-600">Privacy Policy</a>
+                    <a href="#" class="hover:text-indigo-600">Terms</a>
+                    <a href="#" class="hover:text-indigo-600">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
